@@ -8,5 +8,5 @@ A few examples of uses of SVG (Scalable Vector Graphics) images in Salesforce:
 
 * bar code generators
 
-* a way to execute apex when a record is viewed
+* a way to display long text fields with word wrap and barcodes in reports
 

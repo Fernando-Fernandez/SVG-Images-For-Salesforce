@@ -1,0 +1,57 @@
+<apex:page sidebar="false" showHeader="false"
+ applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" 
+ ContentType="image/svg+xml" >
+    <apex:variable var="textWidth" value="{! 37 + LEN( $CurrentPage.parameters.Text ) * 9 }"/>
+    <apex:variable var="halfWidth" value="{! textWidth / 2 }"/>
+    <apex:variable var="buttonColor" value="{!IF( $CurrentPage.parameters.Color = null, 'red', $CurrentPage.parameters.Color )}" />
+    <apex:variable var="textColor" value="{!IF( $CurrentPage.parameters.fgColor = null, 'white', $CurrentPage.parameters.fgColor )}" />
+
+    <svg id="layer_1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        height="40" width="{! textWidth }">
+
+    <defs>
+        <linearGradient id="highlightGradient1" x1="0" x2="0" y1="0" y2="100%" >
+          <stop offset="0" style="stop-color:#ffffff;stop-opacity:1" />
+          <stop offset="25%" style="stop-color:#ffffff;stop-opacity:0" />
+        </linearGradient>
+        <linearGradient id="shadowGradient1" x1="0" x2="0" y1="0" y2="100%" >
+          <stop offset="75%" style="stop-color:#000000;stop-opacity:0" />
+          <stop offset="1" style="stop-color:#000000;stop-opacity:0.25" />
+        </linearGradient>
+    </defs>
+
+    <rect height="40" ry="20"
+       id="ButtonBase"
+       width="{! textWidth }" 
+       style="fill:{! buttonColor };stroke:none">
+    </rect>
+      
+    <rect height="40" ry="20" x="3" y="3"
+       id="ButtonHighlight"
+       width="{! textWidth - 6 }" 
+       style="fill:url(#highlightGradient1);stroke:none">
+    </rect>
+      
+    <rect height="40" ry="20"
+       id="ButtonShadow"
+       width="{! textWidth }" 
+       style="fill:url(#shadowGradient1);stroke:none">
+    </rect>
+      
+    <text x="{! halfWidth }" y="26.5" 
+          font-family="Verdana" font-weight="bold"
+          style="text-align:center;text-anchor:middle;"
+          fill="#000000">
+          {!$CurrentPage.parameters.Text}
+    </text>
+      
+    <text x="{! halfWidth }" y="25" 
+          font-family="Verdana" font-weight="bold"
+          style="text-align:center;text-anchor:middle;"
+          fill="{! textColor }">
+          {!$CurrentPage.parameters.Text}
+    </text>
+    </svg>
+</apex:page>

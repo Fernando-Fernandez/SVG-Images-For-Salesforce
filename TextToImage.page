@@ -1,0 +1,16 @@
+<apex:page sidebar="false" showHeader="false"
+ applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" 
+ ContentType="image/svg+xml" >
+    <apex:variable var="textWidth" value="{! LEN( $CurrentPage.parameters.Text ) * 10 }"/>
+    <apex:variable var="textColor" value="{!IF( $CurrentPage.parameters.Color = null, 'red', $CurrentPage.parameters.Color )}" />
+
+    <svg id="layer_1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        height="20" width="{! textWidth }">
+      <text x="0" y="15" font-family="Verdana" font-weight="bold"
+          fill="{! textColor }">
+          {! $CurrentPage.parameters.Text }
+      </text>
+    </svg>
+</apex:page>

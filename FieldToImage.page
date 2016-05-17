@@ -1,0 +1,19 @@
+<apex:page controller="FieldToImageController" sidebar="false" showHeader="false"
+ applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" 
+ ContentType="image/svg+xml" >
+    <apex:variable var="textColor" value="{!IF( $CurrentPage.parameters.Color = null, 'red', $CurrentPage.parameters.Color )}" />
+
+    <svg id="layer_1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        height="{! textHeight }" width="{! textWidth }">
+      <apex:variable var="l" value="{!0}" />
+      <apex:repeat var="t" value="{!lineList}">
+          <text x="0" y="{! lineY[ l ]}" font-family="Verdana" font-size="12px"
+              fill="{! textColor }">
+              {! t }
+          </text>
+          <apex:variable var="l" value="{!l + 1}" />
+      </apex:repeat>
+    </svg>
+</apex:page>

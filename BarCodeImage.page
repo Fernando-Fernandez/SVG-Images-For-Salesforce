@@ -1,0 +1,11 @@
+<apex:page controller="barCodeImageController" sidebar="false" showHeader="false"
+ applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" 
+ ContentType="image/svg+xml" >
+ 
+    <svg id="layer_1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        height="{! height }" width="{! width }">
+    {! barSequence }
+    </svg>
+</apex:page>
